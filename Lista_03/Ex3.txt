@@ -1,0 +1,60 @@
+
+create database revendedora_carros;
+use revendedora_carros;
+
+create table automovel(
+	renavam varchar(40) not null unique primary key,
+    placa char(7) not null unique,
+    marca varchar(40) not null,
+    modelo varchar(40) not null,
+    ano_fabricacao int not null,
+    cor varchar(40) not null,
+    motor varchar(40) not null,
+    numero_portas int,
+    tipo_combustivel varchar(40) not null,
+    preco decimal(10,2) not null 
+);
+
+create table clientes(
+	codigo_cliente int unique not null primary key,
+    nome varchar(40) not null,
+    sobrenome varchar(40) not null,
+    telefone int not null unique,
+    endereco int
+);
+
+create table endereco(
+	codigo_endereco int not null unique primary key,
+	rua varchar(40) not null,
+    numero int,
+    complemento varchar(40),
+    bairro varchar(40),
+    cidade varchar(40) not null,
+    estado varchar(40) not null,
+    cep char(8) not null
+);
+
+create table vendedores(
+	codigo_vendedores int unique not null primary key,
+    nome varchar(40) not null,
+    sobrenome varchar(40) not null,
+    telefone int not null unique,
+    data_admissao date,
+    salario_fixo decimal(10,2),
+    endereco int
+);
+
+create table negocio(
+	codigo_negocio int unique not null primary key,
+	data_negocio date,
+    preco_pago decimal(10,2),
+    codigo_vendedor int not null,
+    codigo_cliente int not null,
+    renavam varchar(40) not null
+);
+
+alter table vendedores add constraint possui foreign key (endereco) references endereco(codigo_endereco);
+alter table clientes add constraint tem foreign key (endereco) references endereco(codigo_endereco);
+alter table negocio add constraint faz foreign key (renavam) references automovel(renavam);
+alter table negocio add constraint contem foreign key (codigo_vendedor) references vendedores(codigo_vendedores);
+alter table negocio add constraint precisa foreign key (codigo_cliente) references clientes(codigo_cliente);

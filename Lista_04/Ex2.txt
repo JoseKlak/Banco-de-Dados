@@ -1,0 +1,98 @@
+CREATE DATABASE ESCOLA;
+USE ESCOLA;
+
+CREATE TABLE professor (
+	  id INT NOT NULL ,
+	  nome VARCHAR(50) NOT NULL,
+	  email VARCHAR(50) NOT NULL,
+	  valor_hora INTEGER  NULL,
+	  PRIMARY KEY(id)
+);
+ 
+ CREATE TABLE turma (
+	id INTEGER NOT NULL ,
+	carga_horaria SMALLINT NULL,
+	PRIMARY KEY(id)
+);
+ 
+CREATE TABLE aluno (
+	id INT NOT NULL AUTO_INCREMENT,
+	cpf CHAR(11) NOT NULL,
+	nome VARCHAR(50) NOT NULL,
+    id_turma int not null,
+	PRIMARY KEY(id),
+    foreign key (id_turma) references turma(id)
+);
+
+CREATE TABLE aula (
+	  id INTEGER NOT NULL ,
+	  nome VARCHAR(50) NOT NULL,
+      id_prof int not null,
+	  PRIMARY KEY(id),
+      foreign key (id_prof) references professor(id)
+);
+
+create table aula_aluno(
+	id_aula int not null,
+    id_aluno int not null,
+    foreign key (id_aula) references aula(id),
+    foreign key (id_aluno) references aluno(id)
+);
+
+create table prof_turma(
+	id_prof int not null,
+    id_turma int not null,
+    foreign key (id_prof) references professor(id),
+    foreign key (id_turma) references turma(id)
+);
+
+insert into professor
+values (1, 'lucas', 'lucas@hotmail.com', 28);
+insert into professor
+values (2, 'marcos', 'marcos@hotmail.com', 30);
+insert into turma
+values (1, 10);
+insert into turma
+values (2, 20);
+insert aluno
+values (1, 123, 'jose', 1);
+insert aluno
+values (2, 1234, 'cristian', 2);
+insert into aula
+values (1, 'matematica', 1);
+insert into aula
+values (2, 'anatomia', 2);
+insert into aula_aluno
+values (1,1);
+insert into aula_aluno
+values (2,2);
+insert into prof_turma
+values(1,1);
+insert into prof_turma
+values(2,2);
+
+update professor
+set nome = "professor1"
+where id = 1;
+update turma
+set carga_horaria = "15"
+where id = 1;
+update aluno
+set nome = "aluno1"
+where id = 1;
+update aula
+set nome = "aula1"
+where id = 1;
+
+delete from aula_aluno
+where id_aula = 1;
+delete from prof_turma
+where id_prof = 1;
+delete from aluno
+where id = 1;
+delete from aula
+where id = 1;
+delete from professor
+where id = 1;
+delete from turma
+where id = 1;

@@ -1,0 +1,48 @@
+CREATE DATABASE CLINICA;
+use CLINICA;
+
+create table Sala(
+	numero_sala int primary key unique not null check(numero_sala>1 and numero_sala<50),
+    andar int unique not null check(andar<12)
+);
+
+create table Medicos(
+	CRM varchar(15) primary key unique not null,
+    Nome varchar(40) not null,
+    Idade int check(Idade>23),
+    Especialidade char(20) not null default'Ortopedia',
+    CPF varchar(15) unique not null,
+    Data_de_emissao date
+);
+
+create table Pacientes(
+	RG varchar(15) unique not null primary key,
+    Nome varchar(40) not null,
+    Data_Nascimento date,
+    Cidade varchar(30) default'Itabuna',
+    Doenca varchar(40) not null,
+    Plano_saude varchar(40) not null default'SUS'
+);
+
+create table Funcionarios(
+	Matricula varchar(15) unique not null primary key,
+    Nome varchar(40) not null,
+    data_nascimento date not null,
+    data_admissao date not null,
+    Cargo varchar(40) not null default'Assistente Medico',
+    Salario float not null default 510.00
+);
+
+create table Consultas(
+	Codigo_consulta int not null unique,
+    data_horario datetime
+);
+
+alter table sala add CRM varchar(15);
+alter table sala add constraint Atende foreign key (CRM) references medicos(CRM);
+
+alter table consultas add CRM varchar(15);
+alter table consultas add constraint Realiza foreign key(CRM) references medicos(CRM);
+
+alter table consultas add RG varchar(15);
+alter table consultas add constraint Faz foreign key(RG) references pacientes(RG);

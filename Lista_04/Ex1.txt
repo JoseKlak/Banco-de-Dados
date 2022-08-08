@@ -1,0 +1,94 @@
+create database controlelivros;
+use controlelivros;
+
+create table livros(
+	livros_id int not null primary key unique,
+    nome varchar(40),
+    editora_id int not null unique,
+    foreign key (editora_id) references editoras(editoras_id)
+);
+
+create table editoras(
+	editoras_id int not null primary key unique,
+    nome varchar(40)
+);
+
+create table autores(
+	autores_id int not null primary key unique,
+    nome varchar(40)
+);
+
+create table categoria(
+	categoria_id int not null primary key unique,
+    nome varchar(40)
+);
+
+create table livros_categoria(
+	livros_id int not null unique,
+    categoria_id int not null unique,
+    foreign key (livros_id) references livros(livros_id),
+    foreign key (categoria_id) references categoria(categoria_id)
+);
+
+create table livros_autores(
+	livros_id int not null unique,
+    autores_id int not null unique,
+    foreign key (livros_id) references livros(livros_id),
+    foreign key (autores_id) references autores(autores_id)
+);
+
+select * from categoria;
+select * from livros;
+select * from autores;
+select * from editoras;
+
+insert into editoras
+values (1, 'gaucha');
+insert into editoras
+values (2, 'roberta');
+insert into livros
+values (1, 'longas', 2);
+insert into livros
+values (2, 'trancas', 1);
+insert into autores
+values (1, 'jose');
+insert into autores
+values (2, 'douglas');
+insert into categoria
+values (1, 'terror');
+insert into categoria
+values (2, 'comedia');
+insert into livros_categoria
+values (1, 2);
+insert into livros_categoria
+values (2, 1);
+insert into livros_autores
+values (1, 2);
+insert into livros_autores
+values (2, 1);
+
+update livros
+set nome = "livro1"
+where livros_id = 1;
+update editoras
+set nome = "editora1"
+where editoras_id = 1;
+update autores
+set nome = "autor1"
+where autores_id = 1;
+update categoria
+set nome = "categoria1"
+where categoria_id = 1;
+
+delete from livros_autores
+where livros_id = 1;
+delete from livros_categoria
+where livros_id = 1;
+delete from livros
+where livros_id = 1;
+delete from editoras
+where editoras_id = 2;
+delete from autores
+where autores_id = 2;
+delete from categoria
+where categoria_id = 2;

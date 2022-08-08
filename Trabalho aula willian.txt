@@ -1,0 +1,13 @@
+1) Qual é o valor dos dados na atualialidade?
+	Os dados de usuarios tem muito valor comercial, e geralmente sao bem disputados pelos sites ou redes sociais mais famosa. Conforme vão se coletando dados sobre uma determinada pessoa por exemplo, consegue se fazer uma propaganda muito mais personalizada, assim aumentando o numero de vendas de determinado item.
+
+2) O que são dados?
+	Os dados sao fatos, que podem ser armazenados em algum meio, como por exemplo: nome de uma pessoa, cpf, data de nascimento, etc...
+
+3) O que é a estrutura do banco de dados?
+	A estrutura do banco de dados depende do banco, e são definidas no processo de instalação, geralmente eles tem um conjunto de tabelas, que descrevem a estrutura lógica e fisica dos dados, um arquivo de configuração contendo os parâmetros alocados e um log de recuperação com transações contínuas e arquiváveis.
+
+4) O que são sistemas gerenciadores do banco de dados?
+	São um conjunto de softwares responsáveis pelo gerenciamento de uma base de dados. Tem como seu principal objetivo fornecer uma interface para que os clientes possam incluir, alterar ou consultando dados previamente armazenados.
+
+5)Banco de dados open sourch e proprietários. qual a diferênça?

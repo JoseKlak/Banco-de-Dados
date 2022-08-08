@@ -1,0 +1,78 @@
+Banco de dados da universidade biopark
+
+Cantina do bloco do biopark educação:
+	funcionarias:
+		telefone:
+		email:
+		habilidades:
+		valor da hora: 
+	cardapio:
+		item:
+		preço:
+		estoque:
+	forma de pagamento:
+	horario de funcionamento:
+
+curso connect:
+	professores:
+		telefone:
+		email:
+		formação:
+		disciplina:
+		horas diarias:
+		valor da hora:
+		avaliação:
+	disciplinas:
+		quantidade de horas:
+		grade:
+		dificuldade:
+	alunos:
+		telefone:
+		email:
+		formação:
+		qualificação no processo seletivo:
+		experiencia proficional:
+	avaliações:
+	
+biblioteca:
+	funcionarias:
+		formação:
+		tempo da jornada de trabalho diaria:
+		telefone:
+		email:
+	notebooks:
+		quantidade disponiveis no momento:
+		estado dele (esprestado ou disponivel):
+		estado dele (para manuntenção ou funcional):
+	livros:
+		titulos:
+		edição:
+		numero de exemplares disponiveis:
+	filtros de linha:
+		quantidade disponiveis no momento:
+		estado dela (esprestado ou disponivel):
+	salas de estudo:
+		quantidades disponiveis no momento:
+		quantidade de mesas nela:
+		quantidade de cadeiras nela:
+
+banheiros:
+	quantidade:
+	quantidade de vasos:
+	quantidade de mictorios:
+	quantidade de pias:
+	quantidade de trocadores de banheiro:
+	quantidade de espelhos
+
+laboratorios:
+	area de atuação:
+	quantidade de bancadas:
+	equipamento:	
+		area pro uso:
+		cuidados para o uso:
+		serve para:
+	
+		
+		
+		
+		
