@@ -1,0 +1,45 @@
+SELECT nome from estilo ORDER BY nome;
+SELECT nome from autor ORDER BY nome DESC;
+SELECT nome, telefone from editora;
+SELECT nome from editora;
+SELECT nome from estilo ORDER BY nome desc;
+SELECT id_estilo from estilo WHERE id_estilo=3;
+SELECT id_autor from autor where id_autor=1;
+SELECT id_editora from editora where id_editora=4;
+SELECT livro.titulo,livro.id_livro, editora.nome from livro
+INNER JOIN editora ON livro.id_editora=editora.id_editora;
+SELECT livro.titulo, editora.nome from livro
+INNER JOIN editora on livro.id_editora=editora.id_editora WHERE editora.nome LIKE 'a%';
+SELECT livro.titulo, editora.nome as editora, autor.nome as autor, estilo.nome as estilo from livro
+INNER JOIN editora on livro.id_editora=editora.id_editora
+INNER JOIN estilo on livro.id_estilo=estilo.id_estilo
+inner join autor on livro.id_autor=autor.id_autor;
+SELECT livro.titulo, editora.nome from livro
+INNER JOIN editora on livro.id_editora=editora.id_editora WHERE editora.telefone = '12345';
+SELECT livro.titulo, autor.nome from livro
+INNER JOIN autor on livro.id_autor=autor.id_autor WHERE autor.idade = 35;
+SELECT livro.titulo, editora.nome as editora, autor.nome as autor from livro
+INNER JOIN editora on livro.id_editora=editora.id_editora
+inner join autor on livro.id_autor=autor.id_autor WHERE autor.nome = 'dan brown';
+SELECT livro.titulo, editora.nome as editora, autor.nome as autor from livro
+INNER JOIN editora on livro.id_editora=editora.id_editora
+inner join autor on livro.id_autor=autor.id_autor 
+WHERE autor.nome = 'dan brown' and autor.idade = 35;
+SELECT livro.titulo, editora.nome as editora, autor.nome as autor from livro
+INNER JOIN editora on livro.id_editora=editora.id_editora
+inner join autor on livro.id_autor=autor.id_autor 
+WHERE autor.nome = 'dan brown' or editora.telefone = '123345';
+SELECT livro.titulo, estilo.nome from livro
+INNER JOIN estilo on livro.id_estilo=estilo.id_estilo WHERE estilo.nome = 'romance';
+SELECT livro.titulo, estilo.nome from livro
+INNER JOIN estilo on livro.id_estilo=estilo.id_estilo 
+inner join editora
+WHERE editora.nome = 'globo';
+SELECT livro.titulo as titulo, editora.nome as editora, autor.nome as autor from livro
+INNER JOIN editora
+INNER JOIN autor;
+
+
+
+
+
