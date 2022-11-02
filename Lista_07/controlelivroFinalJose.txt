@@ -1,0 +1,134 @@
+
+
+SELECT livro.titulo,editora.nome,estilo.nome,autor.nome
+FROM livro,editora,estilo,autor;
+
+SELECT livro.titulo,editora.nome
+FROM livro
+INNER JOIN editora
+ON livro.id_editora = editora.id_editora
+WHERE editora.telefone = '123345';
+
+SELECT livro.titulo,autor.nome
+FROM livro
+INNER JOIN autor
+ON livro.id_livro = autor.id_autor
+WHERE  autor.idade = 35;
+
+SELECT livro.titulo,autor.nome,editora.nome
+FROM livro
+INNER JOIN autor
+ON livro.id_livro = autor.id_autor
+INNER JOIN editora
+ON editora.id_editora = autor.id_autor
+WHERE  autor.nome = 'Dan Brown';
+ 
+SELECT livro.titulo,autor.nome,editora.nome
+FROM livro
+INNER JOIN autor
+ON livro.id_livro = autor.id_autor
+INNER JOIN editora
+ON editora.id_editora = autor.id_autor
+WHERE  autor.nome = 'Dan Brown' AND autor.idade = 35;
+ 
+SELECT livro.titulo,autor.nome,editora.nome
+FROM livro
+INNER JOIN autor
+ON livro.id_livro = autor.id_autor
+INNER JOIN editora
+WHERE  autor.nome = 'Dan Brown' AND editora.telefone = '123345';
+
+SELECT livro.titulo,estilo.nome
+FROM livro,estilo
+WHERE estilo.nome = 'Romance';
+
+SELECT livro.titulo,estilo.nome,editora.nome
+FROM livro,estilo,editora
+WHERE editora.nome = 'Globo';
+
+SELECT Max(valor) from livro;
+
+SELECT Min(valor) from livro;
+
+SELECT Avg(valor) from livro;
+
+SELECT Avg(valor_hr) from autor;
+
+SELECT count(livro.titulo) from livro;
+
+SELECT count(livro.titulo) from livro
+WHERE livro.id_editora = 2;
+
+SELECT count(livro.titulo) from livro,estilo
+WHERE estilo.id_estilo = 5;
+
+SELECT livro.titulo,editora.nome
+FROM livro,editora
+WHERE livro.id_livro = editora.id_editora;
+
+SELECT livro.titulo,editora.nome 
+FROM livro,editora 
+WHERE editora.nome LIKE 'A%'AND livro.id_livro = editora.id_editora;
+
+SELECT autor.nome, count(livro.id_livro)
+FROM livro
+RIGHT JOIN livro_autor ON livro.id_livro = livro_autor.id_livro
+RIGHT JOIN autor ON livro_autor.id_autor = autor.id_autor
+GROUP BY autor.nome
+HAVING count(livro.id_livro) = 0;
+
+SELECT editora.nome, count(livro.id_livro) AS quantidade
+FROM livro
+RIGHT JOIN editora ON livro.id_editora = editora.id_editora
+GROUP BY editora.nome
+HAVING count(livro.id_livro) = 0;
+
+SELECT estilo.nome, count(livro.id_livro)
+FROM livro
+RIGHT JOIN livro_estilo ON livro.id_livro = livro_estilo.id_livro
+RIGHT JOIN estilo ON livro_estilo.id_estilo = estilo.id_estilo
+GROUP BY estilo.nome
+HAVING count(livro.id_livro) = 0;
+
+SELECT autor.nome, count(livro.id_livro)
+FROM livro
+RIGHT JOIN livro_autor ON livro.id_livro = livro_autor.id_livro
+RIGHT JOIN autor ON livro_autor.id_autor = autor.id_autor
+GROUP BY autor.nome;
+
+SELECT editora.nome, count(livro.id_livro) AS quantidade
+FROM livro
+RIGHT JOIN editora ON livro.id_editora = editora.id_editora
+GROUP BY editora.nome;
+
+SELECT estilo.nome, count(livro.id_livro)
+FROM livro
+RIGHT JOIN livro_estilo ON livro.id_livro = livro_estilo.id_livro
+RIGHT JOIN estilo ON livro_estilo.id_estilo = estilo.id_estilo
+GROUP BY estilo.nome;
+
+SELECT editora.nome, count(livro.id_livro) AS quantidade
+FROM livro
+RIGHT JOIN editora ON livro.id_editora = editora.id_editora
+GROUP BY editora.nome
+HAVING editora.nome = 'CCCC';
+
+SELECT autor.nome, count(livro.id_livro)
+FROM livro
+RIGHT JOIN livro_autor ON livro.id_livro = livro_autor.id_livro
+RIGHT JOIN autor ON livro_autor.id_autor = autor.id_autor
+GROUP BY autor.nome
+HAVING autor.nome = 'J R R Tolkien';
+
+
+
+
+
+
+
+
+
+
+
+
+
